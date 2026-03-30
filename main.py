@@ -1,6 +1,7 @@
 import os
 import json
 
+
 tasks = []
 
 def add_task():
@@ -64,6 +65,11 @@ def load_file():
         tasks = []
         print("No saved file found. Starting fresh.")
 
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+
+# Main Program
 
 # Main Program
 load_file()
@@ -79,24 +85,30 @@ while True:
     choice = input("Choose an option: ")
 
     if choice == "1":
+        cls()
         add_task()
         write_file()
 
     elif choice == "2":
+        cls()
         view_tasks()
 
     elif choice == "3":
+        cls()
         view_tasks()
         mark_done()
         write_file()
 
     elif choice == "4":
+        cls()
         delete_task()
         write_file()
 
     elif choice == "5":
+        cls()
         print("Goodbye!")
         break
 
     else:
         print("Invalid choice!")
+
