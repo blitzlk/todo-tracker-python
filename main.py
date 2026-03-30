@@ -1,3 +1,6 @@
+import os
+import json
+
 tasks = []
 
 def add_task():
@@ -46,8 +49,54 @@ def delete_task():
     else:
         print("invalid task number!")
 
+def write_file():
+    with open ('tasks.json','w', encoding = 'utf-8') as f:
+        json.dump(tasks, f, ensure_ascii = False, indent=4 )
+    print("Saved to file!")
+
+def load_file():
+    global tasks
+    try:
+        with open('tasks.json', 'r', encoding='utf-8') as f:
+            tasks = json.load(f)
+        print("Loaded tasks from file!")
+    except FileNotFoundError:
+        tasks = []
+        print("No saved file found. Starting fresh.")
+
+
 # Main Program
-add_task()
-view_tasks()
-mark_done()
-view_tasks()
+load_file()
+
+while True:
+    print("\n--- TODO MENU ---")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task Done")
+    print("4. Delete Task")
+    print("5. Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        add_task()
+        write_file()
+
+    elif choice == "2":
+        view_tasks()
+
+    elif choice == "3":
+        view_tasks()
+        mark_done()
+        write_file()
+
+    elif choice == "4":
+        delete_task()
+        write_file()
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice!")
