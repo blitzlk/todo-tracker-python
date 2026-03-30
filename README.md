@@ -8,6 +8,8 @@ It allows users to add, view, and complete tasks.
 - View all tasks
 - Mark tasks as complete
 - Tasks saved to file
+- Delete tasks
+- Terminal UI
 
 ## How to Run
 1. Make sure Python is installed
@@ -19,4 +21,5 @@ python main.py
 ## Future Improvements
 - Add due dates
 - Add task priorities
-- Build a graphical interface
+- App interface
+  
